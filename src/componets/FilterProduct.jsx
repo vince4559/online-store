@@ -18,7 +18,7 @@ import React from 'react'
 import { DataProvider } from '../context/Context';
 import { FILTERACTIONS } from '../context/Reducers';
 import Rating from './Rating';
-import { BsArrowRightCircle } from "react-icons/Bs"
+import { BsArrowRightCircle } from "react-icons/bs"
 
 
 const FilterProduct = () => {
