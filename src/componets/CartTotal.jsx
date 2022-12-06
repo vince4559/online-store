@@ -1,9 +1,9 @@
-import { Box, Button, HStack, Stack, Text, VStack } from '@chakra-ui/react';
+import {  Button, HStack, Stack, Text, VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import { DataProvider } from '../context/Context';
 
 const CartTotal = () => {
-    const {state:{cart}, dispatch } = DataProvider();
+    const {state:{cart},  } = DataProvider();
     const [total, setTotal] = useState();
 
     useEffect(() => {

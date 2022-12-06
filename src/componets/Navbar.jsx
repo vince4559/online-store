@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from "react-router-dom"
 import CartMenu from './CartMenu';
 import { DataProvider } from '../context/Context';
-import { FILTERACTIONS } from '../context/Reducer';
+import { FILTERACTIONS } from '../context/Reducers';
 
 
 const Navbar = () => {

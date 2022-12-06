@@ -1,11 +1,11 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList, Badge, HStack, Image, Stack, } from '@chakra-ui/react';
 import React from 'react'
-import { BsCart4 } from "react-icons/Bs";
+import { BsCart4 } from "react-icons/bs";
 import { AiFillDelete } from "react-icons/ai";
 import { NavLink } from "react-router-dom"
 import { DataProvider } from '../context/Context';
 import PriceFormater from '../utilities/PriceFormater';
-import { ACTIONS } from '../context/Reducer';
+import { ACTIONS } from '../context/Reducers';
 
 
 

@@ -16,9 +16,9 @@ import {
   } from '@chakra-ui/react'
 import React from 'react'
 import { DataProvider } from '../context/Context';
-import { FILTERACTIONS } from '../context/Reducer';
+import { FILTERACTIONS } from '../context/Reducers';
 import Rating from './Rating';
-import { BsArrowRightCircle } from "react-icons/bs"
+import { BsArrowRightCircle } from "react-icons/Bs"
 
 
 const FilterProduct = () => {

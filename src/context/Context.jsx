@@ -1,5 +1,5 @@
 import React,{useContext, createContext, useReducer} from 'react';
-import { cartReducer, filterReducer } from './Reducer';
+import { cartReducer, filterReducer } from "./Reducers"
 import { products } from '../data';
 
 const AppContext = createContext()

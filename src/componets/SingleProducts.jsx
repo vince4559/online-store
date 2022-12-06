@@ -3,7 +3,7 @@ import React from 'react'
 import PriceFormater from '../utilities/PriceFormater'
 import Rating from './Rating'
 import { DataProvider } from '../context/Context';
-import { ACTIONS } from '../context/reducer';
+import { ACTIONS } from '../context/Reducers';
 
 
 

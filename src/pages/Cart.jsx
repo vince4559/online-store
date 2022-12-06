@@ -3,7 +3,7 @@ import React from 'react'
 import { DataProvider } from '../context/Context';
 import { AiFillDelete } from "react-icons/ai";
 import PriceFormater from '../utilities/PriceFormater';
-import { ACTIONS } from '../context/Reducer';
+import { ACTIONS } from '../context/Reducers';
 import Rating from '../componets/Rating';
 import CartTotal from '../componets/CartTotal';
 
