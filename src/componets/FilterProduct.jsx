@@ -18,6 +18,7 @@ import React from 'react'
 import { DataProvider } from '../context/Context';
 import { FILTERACTIONS } from '../context/Reducer';
 import Rating from './Rating';
+import { BsArrowRightCircle } from "react-icons/bs"
 
 
 const FilterProduct = () => {
@@ -27,9 +28,9 @@ const FilterProduct = () => {
      filterDispatch} = DataProvider();
      console.log(byStock,byFastDelivery,byRating, sort, searchQuery)
   return (
-   <Box  p={2} bg={'gray.100'}>
-     <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-        Filter Product
+   <Box  p={1} bg={'gray.100'} >
+     <Button ref={btnRef}  onClick={onOpen} colorScheme="none" color={'green'}>
+        <BsArrowRightCircle /> Filter product
       </Button>
       <Drawer
         isOpen={isOpen}

@@ -20,7 +20,7 @@ switch(action.type){
     case ACTIONS.REMOVE_FROM_cART:
         return {
             ...state, 
-            cart: state.cart.filter(c => c.id === action.payload.id)
+            cart: state.cart.filter(c => c.id !== action.payload.id)
         }
         case ACTIONS.CHANGE_CART_Qty:
             return {

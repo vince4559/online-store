@@ -23,7 +23,8 @@ const Cart = () => {
           <p>{PriceFormater(prod.price)}</p>  
           <Box>
             Qty: <FormControl as={'select'} value={prod.qty}   
-            w={'50px'} colorScheme={'green'}
+            w={'100px'} colorScheme={'green'}
+            cursor={'pointer'}
             onChange={(e) => dispatch({
               type: ACTIONS.CHANGE_CART_Qty,
               payload:{
@@ -37,7 +38,7 @@ const Cart = () => {
             ))}
           </FormControl>
           </Box>
-          <HStack  ><Rating rating = {prod.rating} /></HStack>        
+          <HStack display={['none', 'none', 'block', 'block']} ><Rating rating = {prod.rating} /></HStack>        
           <IconButton icon={<AiFillDelete />}
           cursor={'pointer'}
             colorScheme='none' color={'red'} 

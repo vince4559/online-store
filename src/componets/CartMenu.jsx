@@ -1,4 +1,4 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList, Badge, HStack, Image, Stack, IconButton } from '@chakra-ui/react';
+import { Button, Menu, MenuButton, MenuItem, MenuList, Badge, HStack, Image, Stack, } from '@chakra-ui/react';
 import React from 'react'
 import { BsCart4 } from "react-icons/Bs";
 import { AiFillDelete } from "react-icons/ai";
@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom"
 import { DataProvider } from '../context/Context';
 import PriceFormater from '../utilities/PriceFormater';
 import { ACTIONS } from '../context/Reducer';
+
 
 
 const CartMenu = () => {
@@ -32,9 +33,10 @@ const CartMenu = () => {
                     <Image alt='cart_img' src={prod.image} w='50px' rounded={'base'} loading='eager' />
                       <p>{prod.name}</p>
                       <p>{PriceFormater(prod.price)}</p>
-                      <IconButton  icon={<AiFillDelete />}
-                      cursor={'pointer'}
-                       colorScheme='none' color={'red'} 
+      
+                       <AiFillDelete 
+                       cursor={'pointer'}
+                       color={'red'} 
                        onClick={() =>dispatch({type: ACTIONS.REMOVE_FROM_cART, payload:prod}) }
                        />
                   </HStack>
