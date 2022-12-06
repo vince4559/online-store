@@ -15,10 +15,17 @@ import {
     Checkbox,
   } from '@chakra-ui/react'
 import React from 'react'
+import { DataProvider } from '../context/Context';
+import { FILTERACTIONS } from '../context/Reducer';
+import Rating from './Rating';
+
 
 const FilterProduct = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = React.useRef()
+    const btnRef = React.useRef();
+    const {filterState:{byStock,byFastDelivery,byRating, sort, searchQuery},
+     filterDispatch} = DataProvider();
+     console.log(byStock,byFastDelivery,byRating, sort, searchQuery)
   return (
    <Box  p={2} bg={'gray.100'}>
      <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
@@ -36,22 +43,73 @@ const FilterProduct = () => {
           <DrawerHeader>Filter Product</DrawerHeader>
 
           <DrawerBody>
-                <RadioGroup defaultValue='1'>
+                <RadioGroup  >
                    <Stack mb={1}>
-                   <Radio value='1'>Asending</Radio>
-                    <Radio value='2'>Desending</Radio>
+                   <Radio                     
+                   type={'radio'}
+                   name='group_1'                   
+                   id='_1'
+                   onChange={() => filterDispatch({
+                    type: FILTERACTIONS.SORT_BY_PRICE,
+                    payload: 'lowToHigh'
+                   })}
+                   checked={sort === 'lowToHigh'? true : false}
+                   >
+                    Asending
+                    </Radio>
+                    <Radio                   
+                    id='_2'                 
+                   type={'radio'}
+                   name='group_2'
+                   onChange={() => filterDispatch({
+                    type: FILTERACTIONS.SORT_BY_PRICE,
+                    payload: 'highToLow'
+                   })}
+                   checked={sort === 'highToLow'? true : false}
+                   >
+                    Desending
+                    </Radio>
                    </Stack>
                    <CheckboxGroup>
                     <Stack spacing={2}>
-                    <Checkbox>Include out of stock</Checkbox>
-                    <Checkbox>Fast delivery</Checkbox>
+                    <Checkbox 
+                    name='group2'
+                    type={'checkbox'}
+                    onChange={() => filterDispatch({
+                      type: FILTERACTIONS.FILTER_BY_STOCK,
+                    })}
+                    checked={byStock}
+                    >
+                      Include out of stock
+                      </Checkbox>
+                      <Checkbox 
+                      name='group2'
+                      type={'checkbox'}
+                      onChange={() => filterDispatch({
+                        type: FILTERACTIONS.FILTER_BY_DELIVERY,
+                      })}
+                      checked={byFastDelivery}
+                    >
+                      By Fast Delivery
+                      </Checkbox>
                     </Stack>
                    </CheckboxGroup>
                 </RadioGroup>
                 <Box mb={3}>
-                <span>Rating: </span>
+                <span>Rating: 
+                  <Rating 
+                  onClick={(i) => filterDispatch(
+                    {type:FILTERACTIONS.FILTER_BY_RATING, payload: i})} 
+                  rating={byRating} 
+                  style={{cursor: 'pointer'}} /> 
+                </span>
                 </Box>
-                <Button>Clear Filter</Button>
+                <Button
+                  onClick={(i) => filterDispatch(
+                    {type:FILTERACTIONS.CLEAR_FILTER})}
+                >
+                  Clear Filter
+                </Button>
           </DrawerBody>
         </DrawerContent>
       </Drawer>

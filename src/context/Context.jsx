@@ -1,15 +1,23 @@
 import React,{useContext, createContext, useReducer} from 'react';
-import { reducer } from './reducer';
+import { cartReducer, filterReducer } from './Reducer';
 import { products } from '../data';
 
 const AppContext = createContext()
 const Context = ({children}) => {
-    const [ state, dispatch] = useReducer(reducer, {
-        products,
-        cart:[]
-    })
+  const [state, dispatch] = useReducer(cartReducer, {
+    products,
+    cart: [],
+  }); 
+
+  const [filterState, filterDispatch] = useReducer(filterReducer, {
+    byStock: false,
+    byFastDelivery: false,
+    byRating:0,
+    searchQuery: '',
+  })
+
   return (
-    <AppContext.Provider value={{state, dispatch}}>
+    <AppContext.Provider value={{state, dispatch,filterState ,filterDispatch}}>
         {children}
     </AppContext.Provider>
   )

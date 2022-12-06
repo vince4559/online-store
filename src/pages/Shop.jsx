@@ -6,13 +6,44 @@ import { DataProvider } from '../context/Context';
 
 
 const Shop = () => {
-   const {state:{products}} = DataProvider();
+   const {state:{products},
+   filterState:{byStock,byFastDelivery,byRating, sort, searchQuery}} = DataProvider();
+
+   const transformProducts = () => {
+    let sortedProducts = products;
+
+    if(sort){
+      sortedProducts = sortedProducts.sort((a,b)=>(
+        sort ==='lowToHigh'? a.price - b.price : b.price - a.price
+      ))
+    }
+
+    if(!byStock){
+      sortedProducts = sortedProducts.filter((prod) => prod.inStock)
+    }
+
+    if(byFastDelivery){
+      sortedProducts = sortedProducts.filter((prod) => prod.byFastDelivery)
+    }
+
+    if(byRating){
+      sortedProducts = sortedProducts.filter((prod) => prod.rating >= byRating)
+    }
+
+    if(searchQuery){
+      sortedProducts = sortedProducts.filter((prod) =>
+      prod.name.toLowerCase().includes(searchQuery)
+      )
+    }
+
+    return sortedProducts
+   }
   return (
-      <Box maxW={'100vw'} >
+      <Box >
       <FilterProduct />
       <Flex  wrap={'wrap'} w={'full'} justify='space-around'>
       {
-        products.map(prod => {
+        transformProducts().map(prod => {
           return <SingleProducts key={prod.id} prod={prod} />
         })
       }
