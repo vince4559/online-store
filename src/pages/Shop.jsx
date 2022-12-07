@@ -39,7 +39,7 @@ const Shop = () => {
     return sortedProducts
    }
   return (
-      <Box >
+      <Box maxW={'100vw'} >
       <FilterProduct />
       <Flex  wrap={'wrap'} w={'full'} justify='space-around'>
       {

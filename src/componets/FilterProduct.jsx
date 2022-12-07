@@ -26,9 +26,9 @@ const FilterProduct = () => {
     const btnRef = React.useRef();
     const {filterState:{byStock,byFastDelivery,byRating, sort, searchQuery},
      filterDispatch} = DataProvider();
-     console.log(byStock,byFastDelivery,byRating, sort, searchQuery)
+    //  console.log(byStock,byFastDelivery,byRating, sort, searchQuery)
   return (
-   <Box  p={1} bg={'gray.100'} >
+   <Box  p={1} bg={'gray.100'} position={'sticky'} top={"4rem"} zIndex={1} >
      <Button ref={btnRef}  onClick={onOpen} colorScheme="none" color={'green'}>
         <BsArrowRightCircle /> Filter product
       </Button>
@@ -75,7 +75,7 @@ const FilterProduct = () => {
                     <Stack spacing={2}>
                     <Checkbox 
                     name='group2'
-                    type={'checkbox'}
+                   
                     onChange={() => filterDispatch({
                       type: FILTERACTIONS.FILTER_BY_STOCK,
                     })}
@@ -83,13 +83,15 @@ const FilterProduct = () => {
                     >
                       Include out of stock
                       </Checkbox>
+                      
                       <Checkbox 
                       name='group2'
-                      type={'checkbox'}
+                      
                       onChange={() => filterDispatch({
                         type: FILTERACTIONS.FILTER_BY_DELIVERY,
                       })}
                       checked={byFastDelivery}
+                      disabled
                     >
                       By Fast Delivery
                       </Checkbox>

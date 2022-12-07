@@ -10,7 +10,7 @@ const CartTotal = () => {
       setTotal(cart.reduce((acc, curr) => acc + Number(curr.price) * curr.qty, 0)) 
     },[cart])
   return (
-    <Stack bg={'green.100'} p={2}   rounded={'lg'} >  
+    <VStack bg={'green.100'} p={2} m={'auto'}   w={'70%'} rounded={'lg'}  >  
         <HStack spacing={10}>
         <Text fontWeight={'bold'}>Subtotal: {cart.length} item(s)</Text>
         <Text fontWeight={'bold'}>Total: ${total}</Text>
@@ -20,7 +20,7 @@ const CartTotal = () => {
             Proceed to checkout
         </Button>
         </VStack>
-    </Stack>
+    </VStack>
   )
 }
 

@@ -1,4 +1,4 @@
-import { HStack, Image, IconButton,  List, ListItem, Box, FormControl } from '@chakra-ui/react'
+import { HStack, Image, IconButton,  List, ListItem, Box, FormControl, Stack } from '@chakra-ui/react'
 import React from 'react'
 import { DataProvider } from '../context/Context';
 import { AiFillDelete } from "react-icons/ai";
@@ -12,8 +12,9 @@ const Cart = () => {
   const {state:{cart}, dispatch } = DataProvider();
 
   return (
-    <Box  m={1}   w={'100vw'}>
-      {
+    <Box  m={1}   maxW={'100vw'} h='fit-content'>
+     <Stack>
+     {
         cart.map(prod => (
           <List key={prod.id} p={3} >
             <ListItem shadow={'base'} >
@@ -23,7 +24,7 @@ const Cart = () => {
           <p>{PriceFormater(prod.price)}</p>  
           <Box>
             Qty: <FormControl as={'select'} value={prod.qty}   
-            w={'100px'} colorScheme={'green'}
+            w={'50px'} colorScheme={'green'}
             cursor={'pointer'}
             onChange={(e) => dispatch({
               type: ACTIONS.CHANGE_CART_Qty,
@@ -40,6 +41,7 @@ const Cart = () => {
           </Box>
           <HStack display={['none', 'none', 'block', 'block']} ><Rating rating = {prod.rating} /></HStack>        
           <IconButton icon={<AiFillDelete />}
+           display={['none', 'none', 'block', 'block']}
           cursor={'pointer'}
             colorScheme='none' color={'red'} 
             onClick={() =>dispatch({type: ACTIONS.REMOVE_FROM_cART, payload:prod}) }
@@ -50,6 +52,7 @@ const Cart = () => {
           </List>
         ))
       }
+     </Stack>
       <CartTotal />
     </Box>
   )

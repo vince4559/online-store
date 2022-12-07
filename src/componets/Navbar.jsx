@@ -9,8 +9,9 @@ import { FILTERACTIONS } from '../context/Reducers';
 const Navbar = () => {
   const { filterDispatch} = DataProvider();
   return (
-    <Flex justifyContent={'space-around'} bg={'darkblue'} w={'100vw'} p={3} gap={5}  >
-      <Flex alignItems={'center'}>
+    <Flex justifyContent={'space-around'} bg={'darkblue'} 
+    w={'100vw'} p={3} gap={5} position={'sticky'} top={0}  zIndex={2} >
+      <Flex alignItems={'center'} >
         <NavLink to={'/'} style={({isActive}) => isActive? {color:'yellow'} : {color:'white'}} >
             Shop
         </NavLink>
